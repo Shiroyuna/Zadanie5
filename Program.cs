@@ -251,12 +251,6 @@ public class RuchDrogowy
             }
         }
 
-        if (vehicleCounts.Count == 0)
-        {
-            Console.WriteLine("Brak danych o pojazdach.");
-            return;
-        }
-
         string mostVehiclesUlica = "";
         string leastVehiclesUlica = "";
         string mostVehiclesSkrzyzowanie = "";
