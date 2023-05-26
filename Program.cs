@@ -168,38 +168,6 @@ public class RuchDrogowy
 
     }
 
-    public void DisplayAllVehicles()
-    {
-        foreach (Dzielnica dzielnica in Dzielnice)
-        {
-            foreach (Ulica ulica in dzielnica.UliceDzielnicy)
-            {
-                foreach (Pojazd pojazd in ulica.Pojazdy)
-                {
-                    Console.WriteLine($"Numer rejestracyjny: {pojazd.NumerRejestracyjny}");
-                }
-            }
-        }
-    }
-
-    public string GetVehicleLocation(int numerRejestracyjny)
-    {
-        foreach (Dzielnica dzielnica in Dzielnice)
-        {
-            foreach (Ulica ulica in dzielnica.UliceDzielnicy)
-            {
-                foreach (Pojazd pojazd in ulica.Pojazdy)
-                {
-                    if (pojazd.NumerRejestracyjny == numerRejestracyjny)
-                    {
-                        return $"Pojazd {numerRejestracyjny} jest na ulicy {ulica.NazwaUlicy} w dzielnicy {dzielnica.NazwaDzielnicy}.";
-                    }
-                }
-            }
-        }
-        throw new Exception("Pojazd o podanym numerze rejestracyjnym nie został znaleziony.");
-    }
-
     public void GenerateRandomVehicles()
     {
         Random random = new Random();
@@ -220,6 +188,24 @@ public class RuchDrogowy
 
             randomUlica.Pojazdy.Add(pojazd);
         }
+    }
+
+    public string GetVehicleLocation(int numerRejestracyjny)
+    {
+        foreach (Dzielnica dzielnica in Dzielnice)
+        {
+            foreach (Ulica ulica in dzielnica.UliceDzielnicy)
+            {
+                foreach (Pojazd pojazd in ulica.Pojazdy)
+                {
+                    if (pojazd.NumerRejestracyjny == numerRejestracyjny)
+                    {
+                        return $"Pojazd {numerRejestracyjny} jest na ulicy {ulica.NazwaUlicy} w dzielnicy {dzielnica.NazwaDzielnicy}.";
+                    }
+                }
+            }
+        }
+        throw new Exception("Pojazd o podanym numerze rejestracyjnym nie został znaleziony.");
     }
 
     public void DisplayVehicleCounts()
@@ -313,6 +299,20 @@ public class RuchDrogowy
         Console.WriteLine($"Najmniej pojazdów jest na ulicy: {leastVehiclesUlica} ({minCount} pojazdów)");
         Console.WriteLine($"Najwięcej pojazdów jest na skrzyżowaniu: {mostVehiclesSkrzyzowanie} ({maxCountSkrzyzowanie} pojazdów)");
         Console.WriteLine($"Najmniej pojazdów jest na skrzyżowaniu: {leastVehiclesSkrzyzowanie} ({minCountSkrzyzowanie} pojazdów)");
+    }
+
+    public void DisplayAllVehicles()
+    {
+        foreach (Dzielnica dzielnica in Dzielnice)
+        {
+            foreach (Ulica ulica in dzielnica.UliceDzielnicy)
+            {
+                foreach (Pojazd pojazd in ulica.Pojazdy)
+                {
+                    Console.WriteLine($"Numer rejestracyjny: {pojazd.NumerRejestracyjny}");
+                }
+            }
+        }
     }
 }
 
